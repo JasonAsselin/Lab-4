@@ -5,12 +5,11 @@ var userModel = require('../models/user');
 
 /* GET users listing. */
 router.get('/users', function (req, res) {
-    userModel.find({}, function (err, users) {
-        if (err) {
-            res.send('Something went wrong.');
-            return;
-        }
-        res.render("users", { users: users });
+    userModel.find({}, function (err, foundUser) {
+        console.log(err);
+        console.log(foundUser);
+        //Passing the user to the pug file
+        res.render('users', { user: foundUser });
     });
 })
 
